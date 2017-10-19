@@ -1,0 +1,11 @@
+---
+# files info
+
+  - name: de-activate default nginx site
+    file: path=/etc/nginx/sites-enabled/default state=absent
+    notify: restart nginx
+
+  - name: activate visualapp nginx site
+    file: src=/etc/nginx/sites-available/visualapp dest=/etc/nginx/sites-enabled/visualapp state=link
+    notify: restart nginx
+~                         

@@ -1,0 +1,16 @@
+---
+# tasks file for visualapp_app
+
+   - name: setup python virtualenv
+     pip: requirements=/var/www/visualapp/requirements.txt virtualenv=/var/www/visualapp/.venu
+     notify: restart apache2
+
+   - name: de-activate default apache site
+     file: path=/etc/apache2/sites-enabled/visualapp.conf state=absent
+     notify: restart apache2
+
+   - name: activate visualapp apache site
+     file: src=/etc/apache2/sites-available/visualapp.conf dest=/etc/apache2/sites-enabled/visualapp.conf state=link
+     notify: restart apache2
+
+

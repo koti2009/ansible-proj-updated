@@ -1,0 +1,10 @@
+---
+# copy files 
+   - name: copy visualapp app source
+     copy: src=visualapp/app/  dest=/var/www/visualapp mode=0775
+     notify: restart apache2
+
+   - name: copy apache virtual host config
+     copy: src=visualapp/visualapp.conf dest=/etc/apache2/sites-available mode=0775
+     notify: restart apache2
+

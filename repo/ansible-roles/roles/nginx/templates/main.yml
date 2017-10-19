@@ -1,0 +1,6 @@
+---
+# info about handlers
+
+  - name: configure nginx site
+    template: src=nginx.conf.j2 dest=/etc/nginx/sites-available/visualapp mode=0644
+    notify: restart nginx
